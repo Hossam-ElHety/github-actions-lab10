@@ -11,9 +11,17 @@ jobs:
             issue_title: '${{ github.event.issue.title }}'
     steps:
       - uses: actions/checkout@v4.1.1
-      - run: |
+      - env: #added
+          issue_title: '${{ github.event.issue.title }}' #added
+        run: |
           if [[ "$issue_title" == *"bug"* ]]; then
             echo "Issue is about a bug!"
           else
             echo "Issue is not about a bug"
           fi
+      # - run: |
+      #     if [[ "$issue_title" == *"bug"* ]]; then
+      #       echo "Issue is about a bug!"
+      #     else
+      #       echo "Issue is not about a bug"
+      #     fi
